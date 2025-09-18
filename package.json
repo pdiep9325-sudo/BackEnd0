@@ -1,0 +1,28 @@
+{
+  "name": "full-backend-zero",
+  "version": "1.0.0",
+  "description": "du an dau tien node js",
+  "keywords": [
+    "nodejs",
+    "react"
+  ],
+  "homepage": "https://github.com/pdiep9325-sudo/BackEnd0#readme",
+  "bugs": {
+    "url": "https://github.com/pdiep9325-sudo/BackEnd0/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pdiep9325-sudo/BackEnd0.git"
+  },
+  "license": "ISC",
+  "author": "taylor",
+  "type": "commonjs",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "express": "4.18.2"
+  }
+}
