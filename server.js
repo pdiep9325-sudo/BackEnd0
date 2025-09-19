@@ -1,33 +1,35 @@
+require("dotenv").config();
 const express = require("express"); //common js
 const path = require("path");
-require("dotenv").config();
+const configViewEngine = require("./src/config/viewEngine");
+const webRouters = require("./src/routes/web");
+const mysql = require("mysql2");
 
-console.log("check env:", process.env);
-// import express from "express"; //es module
 const app = express();
 const port = process.env.PORT || 8888;
 const hostname = process.env.HOST_NAME;
 
+//test connection
+// Create the connection to database
+const connection = mysql.createConnection({
+  host: "localhost",
+  user: "root",
+  database: "hoidanit",
+  port: 3307,
+  password: "123456",
+});
+
+// A simple SELECT query
+connection.query("SELECT * FROM `Users`", function (err, results, fields) {
+  console.log(">>> result", results); // results contains rows returned by server
+  console.log(">>> fileds", fields); // fields contains extra meta data about results, if available
+});
+
 //config template engine ejs
-// app.set("views", path.join(__dirname, "views"));
-app.set("view engine", "ejs");
-app.set("view engine", "pug");
+configViewEngine(app);
 
-//config static files
-app.use(express.static(path.join(__dirname, "public")));
-app.get("/", (req, res) => {
-  res.send("Hello World port 8080 da them nodemon and test nodemon!");
-});
-
-app.get("/abc", (req, res) => {
-  // res.send("<h1>day la doan text da duoc route</h1>");
-  res.render("sample.ejs");
-});
-
-app.get("/pp", (req, res) => {
-  res.render("index", { title: "Hey", message: "Hello there!" });
-});
-
+//khai bao route
+app.use("/", webRouters);
 app.listen(port, hostname, () => {
   console.log(`Example app listening on port ${port}`);
 });
