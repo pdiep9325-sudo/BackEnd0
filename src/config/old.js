@@ -1,5 +1,5 @@
-require("dotenv").config(); //import env library
-const mysql = require("mysql2");
+// require("dotenv").config(); //import env library
+// const mysql = require("mysql2");
 //test connection
 // Create the connection to database
 // const connection = mysql.createConnection({
@@ -10,4 +10,4 @@ const mysql = require("mysql2");
 //   password: process.env.DB_PASSWORD,
 // });
 
-module.exports = connection;
+// module.exports = connection;
